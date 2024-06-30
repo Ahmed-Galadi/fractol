@@ -24,3 +24,8 @@ t_point	sum_points(t_point p1, t_point p2)
 	output_point.imaginary = p1.imaginary + p2.imaginary;
 	return (output_point);
 }
+
+double	hypotnus(t_point p)
+{
+	return ((p.real * p.real) + (p.imaginary * p.imaginary));
+}

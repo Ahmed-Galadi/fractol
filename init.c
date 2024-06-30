@@ -6,6 +6,12 @@ static void	 allocation_error(void)
 	exit(EXIT_FAILURE);
 }
 
+void	data_init(t_fractol *fractol)
+{
+	fractol->escape_value = 4;
+	fractol->iterations_nbr = 42;
+}
+
 void	fractol_init(t_fractol *fractol)
 {
 	fractol->mlx_connection = mlx_init();
@@ -34,4 +40,5 @@ void	fractol_init(t_fractol *fractol)
 												&fractol->img.bits_per_pixel,
 												&fractol->img.line_length,
 												&fractol->img.endian);
+	data_init(fractol);
 }

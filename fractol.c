@@ -9,7 +9,7 @@ int main(int argc, char *argv[])
 	{
 		fractol.name = argv[1];
 		fractol_init(&fractol);
-		//fractol_render(&fractol);
+		fractol_render(&fractol);
 		mlx_loop(fractol.mlx_connection);
 	}
 	else
