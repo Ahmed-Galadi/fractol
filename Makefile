@@ -1,5 +1,5 @@
 CC = cc
-SRCS = fractol.c utils.c
+SRCS = fractol.c utils.c init.c render.c math_utils.c
 CFLAGS = -Wall -Wextra -Werror
 MLX = -lmlx -framework AppKit -framework OpenGL
 DEPS = fractol.h
