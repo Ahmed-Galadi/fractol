@@ -43,7 +43,7 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 		// if hypotenuse > 2 the point has escaped
 		if (hypotnus(z) > fractol->escape_value)
 		{
-			color = adjust(i, BLACK, WHITE, 0,fractol->iterations_nbr);
+			color = adjust(i,0x00ffc0, WHITE, 0,fractol->iterations_nbr);
 			put_pixel(&fractol->img, x, y, color);
 			return ;
 		}
