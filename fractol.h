@@ -6,6 +6,7 @@
 #include <stdlib.h>
 #include <math.h>
 #include <stdio.h>
+#include <fcntl.h>
 
 #define ERROR_MSG	"INPUT ERROR!\n"
 #define WIDTH	800
@@ -55,6 +56,10 @@ typedef struct	s_fractol
 	t_img		img;
 	double		escape_value;
 	int			iterations_nbr; // image quality vs rendering speed
+	double		x_shift;
+	double		y_shift;
+	double		zoom_factor;
+	t_point		julia_val;
 }				t_fractol;
 
 int		ft_strcmp(char *str1, char *str2);
@@ -65,5 +70,9 @@ double	adjust(double num, double new_min, double new_max, double old_min, double
 t_point	square_point(t_point p);
 t_point	sum_points(t_point p1, t_point p2);
 double	hypotnus(t_point p);
+int		key_handler(int key_symbol, t_fractol *fractol);
+int		close_handler(t_fractol *fractol);
+int		mouse_handler(int button, int x, int y,t_fractol *fractol);
+double	ft_atod(char *str);
 
 #endif

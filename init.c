@@ -10,6 +10,16 @@ void	data_init(t_fractol *fractol)
 {
 	fractol->escape_value = 4;
 	fractol->iterations_nbr = 42;
+	fractol->x_shift = 0.0;
+	fractol->y_shift = 0.0;
+	fractol->zoom_factor = 1.0;
+}
+
+void	events_init(t_fractol *fractol)
+{
+	mlx_hook(fractol->mlx_window, 3, 0, key_handler, fractol);
+	mlx_hook(fractol->mlx_window, 5, 0, mouse_handler, fractol);
+	mlx_hook(fractol->mlx_window, 17, 0, close_handler, fractol);
 }
 
 void	fractol_init(t_fractol *fractol)
@@ -41,4 +51,5 @@ void	fractol_init(t_fractol *fractol)
 												&fractol->img.line_length,
 												&fractol->img.endian);
 	data_init(fractol);
+	events_init(fractol);
 }

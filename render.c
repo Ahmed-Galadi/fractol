@@ -8,6 +8,20 @@ static void	put_pixel(t_img *img, int x, int y, int color)
 	*(unsigned int *)(img->pixels_ptr + offset) = color;
 }
 
+static void	julia_mandel(t_fractol *fractol, t_point *z, t_point *c)
+{
+	if (ft_strcmp(fractol->name, "julia"))
+	{
+		c->real = fractol->julia_val.real;
+		c->imaginary = fractol->julia_val.imaginary;
+	}
+	else
+	{
+		c->real = z->real;
+		c->imaginary = z->imaginary;
+	}
+}
+
 // mandalbrot -> z = z^2 + c | z(0,0)| c(actual_pont)
 static void	handle_coordinates(t_fractol *fractol, int x, int y)
 {
@@ -17,11 +31,10 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 	int		color;
 
 	i = 0;
-	z.real = 0.0;
-	z.imaginary = 0.0;
-	// pixel coordinates for x and y to fit in mandalbrot range
-	c.real = adjust(x, -2, +2, 0, WIDTH);
-	c.imaginary = adjust(y, +2, -2, 0, HEIGHT);
+	z.real = (adjust(x, -2, +2, 0, WIDTH) * fractol->zoom_factor) + fractol->x_shift;
+	z.imaginary = (adjust(y, +2, -2, 0, HEIGHT) * fractol->zoom_factor) + fractol->y_shift;
+
+	julia_mandel(fractol, &z, &c);
 	// itereations until the point escape
 	while (i < fractol->iterations_nbr)
 	{
@@ -30,13 +43,13 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 		// if hypotenuse > 2 the point has escaped
 		if (hypotnus(z) > fractol->escape_value)
 		{
-			color = adjust(i, YELLOW, BLUE, 0, fractol->iterations_nbr);
+			color = adjust(i, BLACK, WHITE, 0,fractol->iterations_nbr);
 			put_pixel(&fractol->img, x, y, color);
 			return ;
 		}
 		i++;
 	}
-	put_pixel(&fractol->img, x, y, RED);
+	put_pixel(&fractol->img, x, y, WHITE);
 }
 
 void	fractol_render(t_fractol *fractol)

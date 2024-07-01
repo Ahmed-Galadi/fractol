@@ -1,28 +1,45 @@
-#include "fractol.h"
+#include <stdio.h>
+
+
+double	ft_atod(char *str)
+{
+	long	int_part;
+	double	frac_part;
+	int		sign;
+	double	pow;
+	int		i;
+
+	int_part = 0;
+	frac_part = 0;
+	sign = 1;
+	pow = 1;
+	i = 0;
+	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
+		i++;
+	while (str[i] == '+' || str[i] == '-')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '.' && str[i] != ',')
+	{
+		int_part = (int_part * 10) + (str[i] - '0');
+		i++;
+	}
+	if (str[i] == '.' || str[i] == ',')
+		i++;
+	while(str[i])
+	{
+		pow /= 10;
+		frac_part = frac_part + (str[i] - 48) * pow;
+		i++;
+	}
+	return ((int_part + frac_part) * sign);
+}
 
 int main()
 {
-	t_point	z;
-	t_point	c;
-	double	real_tmp;
-	
-	z.real = 0;
-	z.imaginary = 0;
-
-	c.real = 0.25;
-	c.imaginary = 0.4;
-
-	for (int i = 0; i < 42; ++i)
-	{
-		// Z = Z^2 + C
-		// finding 'Z^2' value;
-		real_tmp = (z.real * z.real) - (z.imaginary * z.imaginary);
-		z.imaginary = 2 * z.real * z.imaginary;
-		z.real = real_tmp;
-		// adding 'C' value
-		z.real += c.real;
-		z.imaginary += c.imaginary;
-		printf("iteration n -> %d | real: %f | imaginary: %f|\n", i, z.real, z.imaginary);	
-	}
+	printf("%f\n", ft_atod("12,25"));
 }
 
