@@ -35,18 +35,31 @@ void	putstr_fd(char *str, int fd)
 	while (*str)
 		write(fd, str++, 1);
 }
+
+static void	fract_handler(char *str, int *i, double *frac_part)
+{
+	double div;
+
+	div = 1;
+	if (str[*i] == '.' || str[*i] == ',')
+		*i += 1;
+	while(str[*i])
+	{
+		div /= 10;
+		*frac_part = *frac_part + (str[*i] - 48) * div;
+		*i += 1;
+	}
+}
 double	ft_atod(char *str)
 {
 	long	int_part;
 	double	frac_part;
 	int		sign;
-	double	pow;
 	int		i;
 
 	int_part = 0;
 	frac_part = 0;
 	sign = 1;
-	pow = 1;
 	i = 0;
 	while ((str[i] >= 9 && str[i] <= 13) || str[i] == 32)
 		i++;
@@ -61,13 +74,6 @@ double	ft_atod(char *str)
 		int_part = (int_part * 10) + (str[i] - '0');
 		i++;
 	}
-	if (str[i] == '.' || str[i] == ',')
-		i++;
-	while(str[i])
-	{
-		pow /= 10;
-		frac_part = frac_part + (str[i] - 48) * pow;
-		i++;
-	}
+	fract_handler(str, &i, &frac_part);
 	return ((int_part + frac_part) * sign);
 }

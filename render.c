@@ -21,7 +21,6 @@ static void	julia_mandel(t_fractol *fractol, t_point *z, t_point *c)
 		c->imaginary = z->imaginary;
 	}
 }
-
 // mandalbrot -> z = z^2 + c | z(0,0)| c(actual_pont)
 static void	handle_coordinates(t_fractol *fractol, int x, int y)
 {
@@ -33,7 +32,6 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 	i = 0;
 	z.real = (adjust(x, -2, +2, 0, WIDTH) * fractol->zoom_factor) + fractol->x_shift;
 	z.imaginary = (adjust(y, +2, -2, 0, HEIGHT) * fractol->zoom_factor) + fractol->y_shift;
-
 	julia_mandel(fractol, &z, &c);
 	// itereations until the point escape
 	while (i < fractol->iterations_nbr)
@@ -43,7 +41,7 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 		// if hypotenuse > 2 the point has escaped
 		if (hypotnus(z) > fractol->escape_value)
 		{
-			color = adjust(i,0x00ffc0, WHITE, 0,fractol->iterations_nbr);
+			color = adjust(i, BLUE, COLOR_PSY2, 0, fractol->iterations_nbr);
 			put_pixel(&fractol->img, x, y, color);
 			return ;
 		}

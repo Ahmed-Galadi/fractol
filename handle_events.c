@@ -14,9 +14,9 @@ int		key_handler(int key_symbol, t_fractol *fractol)
 		fractol->y_shift -= 0.5 * fractol->zoom_factor;
 	if (key_symbol == 125) // DOWN
 		fractol->y_shift += 0.5 * fractol->zoom_factor;  
-	if (key_symbol == 124) // RIGHT
+	if (key_symbol == 123) // RIGHT
 		fractol->x_shift -= 0.5 * fractol->zoom_factor;
-	if (key_symbol == 123) // LEFT 
+	if (key_symbol == 124) // LEFT 
 		fractol->x_shift += 0.5 * fractol->zoom_factor;
 	if (key_symbol == 53) // ESC
 		close_handler(fractol);
@@ -36,5 +36,16 @@ int		mouse_handler(int button, int x, int y,t_fractol *fractol)
 		fractol->zoom_factor *= 1.05;
 	(1 && (x = y), (y = x));
 	fractol_render(fractol);
+	return (0);
+}
+
+int	julia_tracker(int x, int y, t_fractol *fractol)
+{
+	if (ft_strcmp(fractol->name, "julia"))
+	{
+		fractol->julia_val.real = (adjust(x, -2, 2, 0, WIDTH) * fractol->zoom_factor) + fractol->x_shift;
+		fractol->julia_val.imaginary = (adjust(y, 2, -2, 0, HEIGHT) * fractol->zoom_factor) + fractol->y_shift;
+		fractol_render(fractol);
+	}
 	return (0);
 }

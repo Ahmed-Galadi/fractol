@@ -1,13 +1,8 @@
 #include "fractol.h"
 
-void f()
-{
-	system("leaks fractol");
-}
 int main(int argc, char *argv[])
 {
 	t_fractol	fractol;
-	atexit(f);
 	if ((argc == 2 && ft_strcmp(argv[1], "mandalbrot"))
 			|| (argc == 4 && ft_strcmp(argv[1], "julia")))
 	{

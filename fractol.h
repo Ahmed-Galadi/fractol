@@ -74,5 +74,6 @@ int		key_handler(int key_symbol, t_fractol *fractol);
 int		close_handler(t_fractol *fractol);
 int		mouse_handler(int button, int x, int y,t_fractol *fractol);
 double	ft_atod(char *str);
+int	julia_tracker(int x, int y, t_fractol *fractol);
 
 #endif
