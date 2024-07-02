@@ -1,10 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/02 01:33:02 by agaladi           #+#    #+#             */
+/*   Updated: 2024/07/02 01:34:06 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "fractol.h"
 
-int main(int argc, char *argv[])
+int	main(int argc, char *argv[])
 {
 	t_fractol	fractol;
+
 	if ((argc == 2 && ft_strcmp(argv[1], "mandalbrot"))
-			|| (argc == 4 && ft_strcmp(argv[1], "julia")))
+		|| (argc == 4 && ft_strcmp(argv[1], "julia")))
 	{
 		fractol.name = argv[1];
 		if (argc == 4)
@@ -23,4 +36,3 @@ int main(int argc, char *argv[])
 	}
 	return (0);
 }
-

@@ -1,45 +1,42 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fractol.h                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/07/02 01:36:44 by agaladi           #+#    #+#             */
+/*   Updated: 2024/07/02 01:41:49 by agaladi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FRACTOL_H
 # define FRACTOL_H
 
-#include <unistd.h>
-#include <mlx.h>
-#include <stdlib.h>
-#include <math.h>
-#include <stdio.h>
-#include <fcntl.h>
+# include <unistd.h>
+# include <mlx.h>
+# include <stdlib.h>
+# include <math.h>
+# include <stdio.h>
+# include <fcntl.h>
 
-#define ERROR_MSG	"INPUT ERROR!\n"
-#define WIDTH	800
-#define HEIGHT	800
+# define ERROR_MSG	"INPUT ERROR!\n"
+# define WIDTH	800
+# define HEIGHT	800
 
-// Basic Colors
-#define BLACK	0x000000
-#define WHITE	0xFFFFFF
-#define RED		0xFF0000
-#define GREEN	0x00FF00
-#define BLUE	0x0000FF
-#define YELLOW	0xFFFF00
-
-// Psychedelic Colors
-#define COLOR_PSY1    0xFF00FF  // Magenta
-#define COLOR_PSY2    0x00FFFF  // Cyan
-#define COLOR_PSY3    0xFFFF00  // Yellow
-#define COLOR_PSY4    0xFF69B4  // Hot Pink
-#define COLOR_PSY5    0x8A2BE2  // Blue Violet
-#define COLOR_PSY6    0x7FFF00  // Chartreuse
-#define COLOR_PSY7    0xFF4500  // Orange Red
-#define COLOR_PSY8    0xDA70D6  // Orchid
-#define COLOR_PSY9    0x00FF7F  // Spring Green
-#define COLOR_PSY10   0xADFF2F  // Green Yellow
-
+// colors
+# define BLACK 0x000000
+# define WHITE 0xFFFFFF
+# define BLUE 0x0000FF
+# define COLOR_PSY2 0x00FFFF // Cyan
 // complex point
-typedef struct	s_point
+typedef struct s_point
 {
 	double		real;
 	double		imaginary;	
 }				t_point;
 // MLX image
-typedef struct	s_img
+typedef struct s_img
 {
 	void		*img_ptr;
 	char		*pixels_ptr;
@@ -48,7 +45,7 @@ typedef struct	s_img
 	int			endian;
 }				t_img;
 // MLX settings
-typedef struct	s_fractol
+typedef struct s_fractol
 {
 	char		*name;
 	void		*mlx_connection; // mlx_init()
@@ -72,8 +69,8 @@ t_point	sum_points(t_point p1, t_point p2);
 double	hypotnus(t_point p);
 int		key_handler(int key_symbol, t_fractol *fractol);
 int		close_handler(t_fractol *fractol);
-int		mouse_handler(int button, int x, int y,t_fractol *fractol);
+int		mouse_handler(int button, int x, int y, t_fractol *fractol);
 double	ft_atod(char *str);
-int	julia_tracker(int x, int y, t_fractol *fractol);
+int		julia_tracker(int x, int y, t_fractol *fractol);
 
 #endif
