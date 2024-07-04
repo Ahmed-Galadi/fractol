@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:58:11 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/02 01:58:13 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/04 22:55:37 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ static void	fract_handler(char *str, int *i, double *frac_part)
 	double div;
 
 	div = 1;
-	if (str[*i] == '.' || str[*i] == ',')
+	if (str[*i] == '.')
 		*i += 1;
 	while(str[*i])
 	{
@@ -81,7 +81,7 @@ double	ft_atod(char *str)
 			sign = -1;
 		i++;
 	}
-	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '.' && str[i] != ',')
+	while ((str[i] >= '0' && str[i] <= '9') && str[i] != '.')
 	{
 		int_part = (int_part * 10) + (str[i] - '0');
 		i++;

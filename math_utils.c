@@ -6,16 +6,16 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:56:16 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/02 01:56:21 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/03 20:49:14 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
 // from [0,.......,799] to -> [-2,.........,+2]
-double	adjust(double num, double new_min, double new_max, double old_min, double old_max)
+double	adjust(double num, double new_min, double new_max, double old_max)
 {
-	return ((new_max - new_min) * (num - old_min) / (old_max - old_min) + new_min);
+	return ((new_max - new_min) * num / old_max + new_min);
 }
 
 t_point	square_point(t_point p)

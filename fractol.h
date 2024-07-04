@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:36:44 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/02 01:41:49 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 00:26:10 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ typedef struct s_fractol
 	double		y_shift;
 	double		zoom_factor;
 	t_point		julia_val;
+	int			julia_tracker;
 }				t_fractol;
 
 int		ft_strcmp(char *str1, char *str2);
 void	putstr_fd(char *str, int fd);
 void	fractol_init(t_fractol *fractol);
 void	fractol_render(t_fractol *fractol);
-double	adjust(double num, double new_min, double new_max, double old_min, double old_max);
+double	adjust(double num, double new_min, double new_max, double old_max);
 t_point	square_point(t_point p);
 t_point	sum_points(t_point p1, t_point p2);
 double	hypotnus(t_point p);
@@ -72,5 +73,6 @@ int		close_handler(t_fractol *fractol);
 int		mouse_handler(int button, int x, int y, t_fractol *fractol);
 double	ft_atod(char *str);
 int		julia_tracker(int x, int y, t_fractol *fractol);
+int		ft_strlen(char *str);
 
 #endif

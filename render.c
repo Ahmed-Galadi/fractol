@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:58:02 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/02 01:58:02 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/03 21:51:08 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,18 +42,16 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 	int		color;
 
 	i = 0;
-	z.real = (adjust(x, -2, +2, 0, WIDTH) * fractol->zoom_factor) + fractol->x_shift;
-	z.imaginary = (adjust(y, +2, -2, 0, HEIGHT) * fractol->zoom_factor) + fractol->y_shift;
+	z.real = (adjust(x, -2, +2, WIDTH) * fractol->zoom_factor) + fractol->x_shift;
+	z.imaginary = (adjust(y, +2, -2, HEIGHT) * fractol->zoom_factor) + fractol->y_shift;
 	julia_mandel(fractol, &z, &c);
 	// itereations until the point escape
 	while (i < fractol->iterations_nbr)
 	{
-		// z = z^2 + c
 		z = sum_points(square_point(z), c);
-		// if hypotenuse > 2 the point has escaped
 		if (hypotnus(z) > fractol->escape_value)
 		{
-			color = adjust(i, BLUE, COLOR_PSY2, 0, fractol->iterations_nbr);
+			color = adjust(i, BLUE, COLOR_PSY2, fractol->iterations_nbr);
 			put_pixel(&fractol->img, x, y, color);
 			return ;
 		}

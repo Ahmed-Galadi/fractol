@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:45:11 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/02 01:51:10 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 00:28:20 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,13 @@ int	key_handler(int key_symbol, t_fractol *fractol)
 		fractol->iterations_nbr += 10;
 	if (key_symbol == 78)
 		fractol->iterations_nbr -= 10;
+	if (key_symbol == 49)
+	{
+		if (fractol->julia_tracker == 1)
+			fractol->julia_tracker = 0;
+		else
+			fractol->julia_tracker = 1;
+	}
 	fractol_render(fractol);
 	return (0);
 }
@@ -53,12 +60,12 @@ int	mouse_handler(int button, int x, int y, t_fractol *fractol)
 
 int	julia_tracker(int x, int y, t_fractol *fractol)
 {
-	if (ft_strcmp(fractol->name, "julia"))
+	if (ft_strcmp(fractol->name, "julia") && fractol->julia_tracker == 1)
 	{
-		fractol->julia_val.real = (adjust(x, -2, 2, 0, WIDTH)
+		fractol->julia_val.real = (adjust(x, -2, 2, WIDTH)
 				* fractol->zoom_factor)
 			+ fractol->x_shift;
-		fractol->julia_val.imaginary = (adjust(y, 2, -2, 0, HEIGHT)
+		fractol->julia_val.imaginary = (adjust(y, 2, -2, HEIGHT)
 				* fractol->zoom_factor)
 			+ fractol->y_shift;
 		fractol_render(fractol);
