@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:33:02 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/05 00:44:41 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 02:28:38 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,12 @@ static int	ft_isdouble(char *d_str)
 	return (1);
 }
 
-static int is_valid(int argc, char *argv[])
+static int	is_valid(int argc, char *argv[])
 {
 	if (argc == 2 && ft_strcmp(argv[1], "mandelbrot"))
 		return (1);
-	if (argc == 4 && ft_strcmp(argv[1], "julia") && ft_isdouble(argv[2]) && ft_isdouble(argv[3]))
+	if (argc == 4 && ft_strcmp(argv[1], "julia")
+		&& ft_isdouble(argv[2]) && ft_isdouble(argv[3]))
 		return (1);
 	return (0);
 }

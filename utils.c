@@ -6,13 +6,13 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:58:11 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/04 22:55:37 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 02:28:16 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fractol.h"
 
-int		ft_strlen(char *str)
+int	ft_strlen(char *str)
 {
 	int		count;
 
@@ -22,7 +22,7 @@ int		ft_strlen(char *str)
 	return (count);
 }
 
-int		ft_strcmp(char *str1, char *str2)
+int	ft_strcmp(char *str1, char *str2)
 {
 	int		i;
 
@@ -34,7 +34,7 @@ int		ft_strcmp(char *str1, char *str2)
 	while (str1[i] && str2[i])
 	{
 		if (str1[i] != str2[i])
-				return (0);
+			return (0);
 		i++;
 	}
 	return (1);
@@ -43,25 +43,26 @@ int		ft_strcmp(char *str1, char *str2)
 void	putstr_fd(char *str, int fd)
 {
 	if (fd < 0 || !str)
-			return ;
+		return ;
 	while (*str)
 		write(fd, str++, 1);
 }
 
 static void	fract_handler(char *str, int *i, double *frac_part)
 {
-	double div;
+	double	div;
 
 	div = 1;
 	if (str[*i] == '.')
 		*i += 1;
-	while(str[*i])
+	while (str[*i])
 	{
 		div /= 10;
 		*frac_part = *frac_part + (str[*i] - 48) * div;
 		*i += 1;
 	}
 }
+
 double	ft_atod(char *str)
 {
 	long	int_part;

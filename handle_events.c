@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:45:11 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/05 00:28:20 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 02:22:23 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	key_handler(int key_symbol, t_fractol *fractol)
 		fractol->y_shift -= 0.5 * fractol->zoom_factor;
 	if (key_symbol == 125)
 		fractol->y_shift += 0.5 * fractol->zoom_factor;
-	if (key_symbol == 123)
-		fractol->x_shift -= 0.5 * fractol->zoom_factor;
 	if (key_symbol == 124)
+		fractol->x_shift -= 0.5 * fractol->zoom_factor;
+	if (key_symbol == 123)
 		fractol->x_shift += 0.5 * fractol->zoom_factor;
 	if (key_symbol == 53)
 		close_handler(fractol);
@@ -49,9 +49,9 @@ int	key_handler(int key_symbol, t_fractol *fractol)
 
 int	mouse_handler(int button, int x, int y, t_fractol *fractol)
 {
-	if (button == 1)
+	if (button == 4)
 		fractol->zoom_factor *= 0.95;
-	if (button == 2)
+	if (button == 5)
 		fractol->zoom_factor *= 1.05;
 	(1 && (x = y), (y = x));
 	fractol_render(fractol);

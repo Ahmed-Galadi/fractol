@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:58:02 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/03 21:51:08 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 02:26:16 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static void	julia_mandel(t_fractol *fractol, t_point *z, t_point *c)
 		c->imaginary = z->imaginary;
 	}
 }
-// mandalbrot -> z = z^2 + c | z(0,0)| c(actual_pont)
+
 static void	handle_coordinates(t_fractol *fractol, int x, int y)
 {
 	t_point	z;
@@ -42,10 +42,11 @@ static void	handle_coordinates(t_fractol *fractol, int x, int y)
 	int		color;
 
 	i = 0;
-	z.real = (adjust(x, -2, +2, WIDTH) * fractol->zoom_factor) + fractol->x_shift;
-	z.imaginary = (adjust(y, +2, -2, HEIGHT) * fractol->zoom_factor) + fractol->y_shift;
+	z.real = (adjust(x, -2, +2, WIDTH)
+			* fractol->zoom_factor) + fractol->x_shift;
+	z.imaginary = (adjust(y, +2, -2, HEIGHT)
+			* fractol->zoom_factor) + fractol->y_shift;
 	julia_mandel(fractol, &z, &c);
-	// itereations until the point escape
 	while (i < fractol->iterations_nbr)
 	{
 		z = sum_points(square_point(z), c);
@@ -77,7 +78,7 @@ void	fractol_render(t_fractol *fractol)
 		y++;
 	}
 	mlx_put_image_to_window(fractol->mlx_connection,
-							fractol->mlx_window,
-							fractol->img.img_ptr,
-							0, 0);
+		fractol->mlx_window,
+		fractol->img.img_ptr,
+		0, 0);
 }

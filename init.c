@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:51:57 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/05 00:25:49 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 02:17:12 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	data_init(t_fractol *fractol)
 void	events_init(t_fractol *fractol)
 {
 	mlx_hook(fractol->mlx_window, 3, 0, key_handler, fractol);
-	mlx_hook(fractol->mlx_window, 5, 0, mouse_handler, fractol);
+	mlx_hook(fractol->mlx_window, 4, 0, mouse_handler, fractol);
 	mlx_hook(fractol->mlx_window, 17, 0, close_handler, fractol);
 	mlx_hook(fractol->mlx_window, 6, 0, julia_tracker, fractol);
 }
