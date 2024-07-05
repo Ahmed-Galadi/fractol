@@ -6,7 +6,7 @@
 /*   By: agaladi <agaladi@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/02 01:36:44 by agaladi           #+#    #+#             */
-/*   Updated: 2024/07/05 00:26:10 by agaladi          ###   ########.fr       */
+/*   Updated: 2024/07/05 23:25:37 by agaladi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@
 # include <stdio.h>
 # include <fcntl.h>
 
-# define ERROR_MSG	"INPUT ERROR!\n"
+# define ERROR_MSG	"\033[38;5;1mINPUT ERROR!!\033[0m\n\
+\033[48;5;4mplease enter:\033[0m\t./fractol mandelbrot\n\
+\033[48;5;4mor:\033[0m\t\t\
+./fractol julia <real_num> <immaginary_num>"
 # define WIDTH	800
 # define HEIGHT	800
 
 // colors
-# define BLACK 0x000000
 # define WHITE 0xFFFFFF
 # define BLUE 0x0000FF
 # define COLOR_PSY2 0x00FFFF // Cyan
@@ -48,11 +50,11 @@ typedef struct s_img
 typedef struct s_fractol
 {
 	char		*name;
-	void		*mlx_connection; // mlx_init()
-	void		*mlx_window;	// mlx_new_window()
+	void		*mlx_connection;
+	void		*mlx_window;
 	t_img		img;
 	double		escape_value;
-	int			iterations_nbr; // image quality vs rendering speed
+	int			iterations_nbr;
 	double		x_shift;
 	double		y_shift;
 	double		zoom_factor;
